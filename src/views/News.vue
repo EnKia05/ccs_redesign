@@ -134,7 +134,7 @@ onUnmounted(() => {
             <h2>CPU - The Cipher</h2>
             <p>The Official Student Publication & Media Outlet of Central Philippine University - College of Computer Studies, founded in 2017.</p>
             <a
-              href="https://www.facebook.com/share/p/19ojhXENVk/"
+              href="https://www.facebook.com/cipherpub"
               target="_blank"
               rel="noopener noreferrer"
               class="pub-fb-btn"
