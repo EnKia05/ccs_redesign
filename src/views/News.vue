@@ -6,49 +6,70 @@ import NewsCard from '../components/NewsCard.vue'
 const selectedCategory = ref('All')
 const categories = ['All', 'Announcements', 'Events', 'Achievements', 'Academic']
 
-// News Dataset
+// News Dataset with Exact Custom Image CDN URLs & Source Article Links
 const newsList = [
   {
     id: 1,
-    title: 'CCS Students Secure Top Spots in National Hackathon',
-    date: 'October 18, 2026',
+    title: 'CPU Computer Science students secure Top 10 spot in AI Game On! IV 2026',
+    date: 'Aug 20, 2026',
     category: 'Achievements',
-    summary: 'Our Computer Science and IT teams demonstrated exceptional skill in software development and algorithm design during the annual regional collegiate dev competition.'
+    summary: 'Congratulations Gian Angelo I. Tumulak (BSCS-3) and Florlynn Hope M. Tugbang (BSCS-3) of the College of Computer Studies for being named among the Top 10 national finalists of AI Game On! IV 2026!',
+    url: 'https://cpu.edu.ph/the-centralian-link/cpu-computer-science-students-secure-top-10-spot-in-ai-game-on-iv-2026/',
+    image: 'https://cpu.edu.ph/wp-content/uploads/2026/08/CPU-Computer-Science-students-secure-Top-10-spot-in-AI-Game-On-IV-2026.jpg'
   },
   {
     id: 2,
-    title: 'Enrollment Open for Next Semester Academic Programs',
-    date: 'October 10, 2026',
+    title: 'Aksyon Departamento and Town Hall Meeting',
+    date: 'October 23, 2026',
     category: 'Announcements',
-    summary: 'Explore our specialized degree offerings across IT, Computer Science, Digital Media, and Library Science. Online pre-registration is now active.'
+    summary: 'Watch the CPU - College of Computer Studies Provincial Council\'s Aksyon Departamento and Town Hall Meeting for the 1st Semester of the A.Y. 2026-2027 live only here at The Cipher Publication. Witness the forums, planning, and council agendas unfold with the chance to be a part of the conversation.',
+    url: 'https://www.facebook.com/share/p/19ojhXENVk/',
+    image: 'https://scontent.fceb6-4.fna.fbcdn.net/v/t39.99422-6/859180806_1649269333558405_1859044475462672181_n.png?stp=dst-jpg_tt6&cstp=mx2048x1014&ctp=s2048x1014&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGi3cJg8IvgsciBqh1KwoMAJUKgwv0lVEUlQqDC_SVURQVzmWnwWmAtyv3sI0DPiMNrW7mE2kdlUxRK7OjObzx0&_nc_ohc=7PIrStSk0s0Q7kNvwELapTk&_nc_oc=AdrFUbrf6rGWrLnRVmC6NBCJFuhqqiLYTaGIAk140fKECTA0yKhG1KtoitM9IYs4bpM&_nc_zt=14&_nc_ht=scontent.fceb6-4.fna&_nc_gid=wFQ-EBtgdOoan03COyxP6Q&_nc_ss=7b2a8&oh=00_AQP0h32Km9ltorqWkV92Ljp0iEeXA5dpjrEVQgQdmrz-6w&oe=6AE38C8D'
   },
   {
     id: 3,
-    title: 'Guest Lecture Series: Emerging Trends in AI and Media',
-    date: 'September 28, 2026',
+    title: '𝗖𝗖𝗦\' 𝗖𝗵𝗼𝗿𝗶𝘀𝘁𝗲𝗿𝘀 𝗦𝗲𝗻𝘀𝗮𝘁𝗶𝗼𝗻𝗮𝗹𝗹𝘆 𝗦𝗲𝗿𝗲𝗻𝗮𝗱𝗲𝘀 𝗥𝗠𝗔 𝗗𝘂𝗿𝗶𝗻𝗴 𝗨𝗪𝗖𝗙 𝟮𝟬𝟮𝟲 𝗖𝗵𝗼𝗿𝗮𝗹𝗲 𝗖𝗼𝗺𝗽𝗲𝘁𝗶𝘁𝗶𝗼𝗻',
+    date: 'October 02, 2026',
     category: 'Events',
-    summary: 'Industry experts share insights on artificial intelligence, interactive design, and data ethics in an interactive virtual panel discussion.'
+    summary: 'The College of Computer Studies\' (CCS) student choir participated in the University Week Centralian Fest 2026 (UWCF 2026) Chorale Competition at the Rose Memorial Auditorium, Central Philippine University.',
+    url: 'https://www.facebook.com/share/p/1KNANVAYsC/',
+    image: 'https://scontent.fceb2-1.fna.fbcdn.net/v/t39.99422-6/854741147_1972805980057835_6004915344997477475_n.png?stp=dst-jpg_tt6&cstp=mx2048x1365&ctp=s2048x1365&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHmH2wfq_m46Vfw0io3XslZpAW2ZzdwwJekBbZnN3DAl6e_ebpM7FguvG72m1QraTeynJeivwgu0F1ZH9iSiFay&_nc_ohc=Ise8kwXDxTgQ7kNvwFBd32f&_nc_oc=AdoTkEC6qqC1NR1IydrJ4FV2bfqwLBq3P5YqZKQ9XwOcY4qkA0FP7EKd-Xx8sQfcg-k&_nc_zt=14&_nc_ht=scontent.fceb2-1.fna&_nc_gid=C90-htRfcKSLA9TAdRk61g&_nc_ss=7b2a8&oh=00_AQN8n8ugMYP1prTvcpr4m3_ToFhpJ12UVbaGditP0YqL1w&oe=6AE39B01'
   },
   {
     id: 4,
-    title: 'CCS Faculty Publish Research on Data Privacy in Cloud Systems',
-    date: 'September 15, 2026',
+    title: '𝗞𝗲𝗹𝗹𝘆 𝗥𝗼𝗻𝘃𝗲𝗮𝘂𝘅\'𝘀 𝗧𝗿𝗶𝘂𝗺𝗽𝗵 𝗮𝘀 𝗖𝗖𝗦\' 𝗔𝘄𝗮𝗿𝗱-𝗪𝗶𝗻𝗻𝗶𝗻𝗴 𝗦𝗽𝗲𝗮𝗸𝗲𝗿 𝗱𝘂𝗿𝗶𝗻𝗴 𝘁𝗵𝗲 𝗨𝗪𝗖𝗙 𝟮𝟬𝟮𝟲 𝗘𝘅𝘁𝗲𝗺𝗽𝗼𝗿𝗮𝗻𝗲𝗼𝘂𝘀 𝗦𝗽𝗲𝗮𝗸𝗶𝗻𝗴 𝗖𝗼𝗺𝗽𝗲𝘁𝗶𝘁𝗶𝗼𝗻',
+    date: 'September 24, 2026',
     category: 'Academic',
-    summary: 'Distinguished faculty members from the Information Technology department have been featured in the International Journal of Computing Research.'
+    summary: 'The Former 2024 champion, Kelly Ronveaux, won the same title this year as a graduating student of BS computer science. She was also the former editor-in-chief of the Cipher Publication and now serves as the publication’s Associate Editor.',
+    url: 'https://www.facebook.com/share/p/1cntKRS2G2/',
+    image: 'https://scontent.fceb6-5.fna.fbcdn.net/v/t39.99422-6/854293490_1126147429791116_5801562508757480027_n.png?stp=dst-jpg_tt6&cstp=mx2048x1365&ctp=s2048x1365&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHNUmtwmiuMt3Rnj3eM1GRXANcWhZKCE_oA1xaFkoIT-mGqW3eH73IoVIpqAhPN-7SbTL334aqFvtGqk3nO4UBS&_nc_ohc=xbuVNtYHZnYQ7kNvwGd_yMg&_nc_oc=AdpcDo7_LwjL3y6lmsXb0Oqydcr-dBKfgbMqyZTZ5BB4XjObbIWR5q0rgctq9ww2RA0&_nc_zt=14&_nc_ht=scontent.fceb6-5.fna&_nc_gid=8Grrdiha0QcYH-euBUfJpQ&_nc_ss=7b2a8&oh=00_AQN4pO3onxR3sJHn9xCWdenniQGMszRhKi5CTt7Y20HSDg&oe=6AE3A0B1'
   },
   {
     id: 5,
-    title: 'Annual College Sports and Tech Cultural Week Announced',
-    date: 'September 02, 2026',
-    category: 'Events',
-    summary: 'Get ready for a week of competitive esports, athletic events, interactive art showcases, and student project exhibitions.'
+    title: '𝗖𝗖𝗦’ 𝗦𝘁𝗿𝗲𝗲𝘁 𝗗𝗮𝗻𝗰𝗲 𝗧𝗿𝗼𝘂𝗽𝗲 𝗪𝗼𝘄𝘀 𝗦𝗽𝗲𝗰𝘁𝗮𝘁𝗼𝗿𝘀 𝗪𝗶𝘁𝗵 𝗔 𝗚𝗿𝗮𝗻𝗱 𝗦𝗹𝗮𝗺 𝗣𝗲𝗿𝗳𝗼𝗿𝗺𝗮𝗻𝗰𝗲 𝗦𝗲𝗰𝘂𝗿𝗶𝗻𝗴 𝗔 𝗧𝗵𝗿𝗲𝗲-𝗣𝗲𝗮𝘁 𝗖𝗵𝗮𝗺𝗽𝗶𝗼𝗻𝘀𝗵𝗶𝗽 𝗦𝘁𝗿𝗲𝗮𝗸 𝗗𝘂𝗿𝗶𝗻𝗴 𝗨𝗪𝗖𝗙 𝟮𝟬𝟮𝟲',
+    date: 'October 02, 2026',
+    category: 'Achievements',
+    summary: 'CCS\'s street dance troupe performed their interpretation of the Dreamworks movie “Turbo,” featuring songs, props and costumes inspired by the 2013 animated film. The performance was done before every one of the three judging stations, and concluded with the College of Computer Studies being declared the champion for the third time in a row since 2024.',
+    url: 'https://www.facebook.com/share/p/1KobP4gjjk/',
+    image: 'https://scontent.fceb2-2.fna.fbcdn.net/v/t39.99422-6/846321167_1109973875114292_3286349829065792226_n.png?stp=dst-jpg_tt6&cstp=mx960x640&ctp=s960x640&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHmzm6oV6_Fej6bhOqD_ykzXSmfHbn4d-pdKZ8dufh36pzx9OAVBw3Sk-szPuJNePwmeLCoNthqqQTGoKIukGUA&_nc_ohc=0ctQmmZjaq8Q7kNvwHdOsPs&_nc_oc=Adr2bIA1xoDv0skcsZJwVF4YKZaqa5PMq91DU836s576X7UEJMHu9h5GzsLE8IhjiNM&_nc_zt=14&_nc_ht=scontent.fceb2-2.fna&_nc_gid=uG-or_hITbpgo-FzWBcTBg&_nc_ss=7b2a8&oh=00_AQMyVP3WzxFyBroCHVws8D67JFVW7zyhRUMOP10LbR1D5A&oe=6AE39D0C'
   },
   {
     id: 6,
-    title: 'Upgraded Computing Laboratories Now Open for Student Use',
-    date: 'August 24, 2026',
-    category: 'Announcements',
-    summary: 'New high-performance graphics workstations and specialized server racks are now available for BSDMIA and BSCS laboratory classes.'
+    title: '𝗕𝗦𝗖𝗦-𝟮’𝘀 𝗞𝗿𝗶𝘀𝘁𝗼𝗳𝗳 𝗔𝘆𝗹 𝗟𝗶𝗺 𝗕𝗮𝗴𝘀 𝟭𝘀𝘁 𝗥𝘂𝗻𝗻𝗲𝗿-𝗨𝗽 𝗧𝗶𝘁𝗹𝗲 𝗪𝗶𝘁𝗵 𝗛𝗶𝘀 𝗔𝘄𝗮𝗿𝗱-𝗪𝗶𝗻𝗻𝗶𝗻𝗴 𝗣𝗼𝗲𝘁𝗿𝘆 𝗣𝗲𝗿𝗳𝗼𝗿𝗺𝗮𝗻𝗰𝗲 𝗗𝘂𝗿𝗶𝗻𝗴 𝗨𝗪𝗖𝗙 𝟮𝟬𝟮𝟲 𝗕𝗶𝗻𝗮𝗹𝗮𝘆𝗯𝗮𝘆 𝗖𝗼𝗺𝗽𝗲𝘁𝗶𝘁𝗶𝗼𝗻',
+    date: 'September 24, 2026',
+    category: 'Academic',
+    summary: 'Kristoff Ayl Lim from BSCS-2, The College of Computer Studies’ (CCS) representative for the University Week Centralian Fest 2026 (UWCF 2026) Binalaybay Competition, gave a commanding performance with his rendered and crafted original poetry piece “Panubli-on Sa Masunod Nga Henerasyon” at the Rose Memorial Auditorium. Lim’s performance tackles on the generational legacy inspired by centralian excellence, weaved and harnessed for the next generation of learners.',
+    url: 'https://www.facebook.com/share/p/1CWuXQkHQH/',
+    image: 'https://scontent.fceb6-4.fna.fbcdn.net/v/t39.99422-6/845530550_1408134651467200_7009846125711718939_n.png?stp=dst-jpg_tt6&cstp=mx960x640&ctp=s960x640&_nc_cat=111&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEmndq1tGVSS_VZ-2-_qdcyqXV9LR1NCXmpdX0tHU0Jecs-J54S7qQC6kOW6NYBOSV6GyCFbeXWrSjd1b_j2jQQ&_nc_ohc=o2o7H9-zKVoQ7kNvwEk95uf&_nc_oc=Adr52rmqKWHMnFDsP2nrhUXeeLdaQSz0cAdN0cPTrcic7kz3dcThZNld4dB0XamIW5w&_nc_zt=14&_nc_ht=scontent.fceb6-4.fna&_nc_gid=QTMHF6-6kVjOemKtla58mw&_nc_ss=7b2a8&oh=00_AQPrHqfIKES9gEvsZXo1hjdJBlmil-q-f3M-41GtZ1I41Q&oe=6AE394F9'
+  },
+  {
+    id: 7,
+    title: '𝗧𝗲𝗰𝗵𝗻𝗼𝗹𝗲𝗴𝗶𝘁𝘇\'𝘀 𝗘𝗹𝗲𝗰𝘁𝗿𝗶𝗳𝘆𝗶𝗻𝗴 𝗣𝗲𝗿𝗳𝗼𝗿𝗺𝗮𝗻𝗰𝗲 𝗗𝘂𝗿𝗶𝗻𝗴 𝗧𝗵𝗲 𝗨𝗪𝗖𝗙 𝟮𝟬𝟮𝟲 𝗛𝗶𝗽-𝗵𝗼𝗽 𝗖𝗼𝗺𝗽𝗲𝘁𝗶𝘁𝗶𝗼𝗻',
+    date: 'September 22, 2025',
+    category: 'Achievements',
+    summary: 'The College of Computer Studies\' (CCS) hip-hop dance troupe "Technolegitz" gave a phenomenal performance during the University Week Centralian Fest 2026 (UWCF 2026) hip-hop competition held at the Rose Memorial Auditorium, Central Philippine University.',
+    url: 'https://www.facebook.com/share/p/18FLi15GAC/',
+    image: 'https://scontent.fceb6-1.fna.fbcdn.net/v/t39.99422-6/854570740_2300349857380535_3987618114930427518_n.png?stp=dst-jpg_tt6&cstp=mx1440x960&ctp=s1440x960&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeG--nGEMtF9XpTlIt75wRlsjccz4PaZrZGNxzPg9pmtkaffFyhtmbIieYm8iuyN7a-U2j5jTeWpNWtqIa2UIAmH&_nc_ohc=3m5Y_7-2_HcQ7kNvwEoG6nY&_nc_oc=AdpMZsepVeBwl1Cd9GA0ZFgDM5vpXC1M_dEvjXXpIl7P_uO7DAAlcIqkEte6z734XAs&_nc_zt=14&_nc_ht=scontent.fceb6-1.fna&_nc_gid=ooTdWAdAkVmrGKGyz7WmNQ&_nc_ss=7b2a8&oh=00_AQOY4mP35QnWDbdvyPNmL_cHvaT3DJIj-7Zf8_iOXZWNmw&oe=6AE3BA80'
   }
 ]
 
@@ -103,6 +124,29 @@ onUnmounted(() => {
       <div class="body-grid-pattern"></div>
 
       <div class="container">
+        <!-- Publication Banner Container -->
+        <section class="publication-card animate-on-scroll">
+          <div class="pub-logo-col">
+            <img src="/Cipher.jpg" alt="CPU - The Cipher Logo" class="pub-logo" />
+          </div>
+          <div class="pub-text-col">
+            <span class="pub-subtitle">College Publication & Media Outlet</span>
+            <h2>CPU - The Cipher</h2>
+            <p>The Official Student Publication & Media Outlet of Central Philippine University - College of Computer Studies, founded in 2017.</p>
+            <a
+              href="https://www.facebook.com/share/p/19ojhXENVk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="pub-fb-btn"
+            >
+              <svg class="fb-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              Visit Our Facebook Page
+            </a>
+          </div>
+        </section>
+
         <!-- Category Filter Tabs -->
         <div class="filter-tabs animate-on-scroll">
           <button
@@ -124,6 +168,8 @@ onUnmounted(() => {
             :date="item.date"
             :category="item.category"
             :summary="item.summary"
+            :url="item.url"
+            :image="item.image"
           />
         </div>
 
@@ -228,7 +274,7 @@ onUnmounted(() => {
 }
 
 /* ==========================================================================
-   Page Body & Filters
+   Page Body & Layout
    ========================================================================== */
 .page-body {
   position: relative;
@@ -256,7 +302,109 @@ onUnmounted(() => {
   padding: 0 1.25rem;
 }
 
-/* Filter Tabs */
+/* ==========================================================================
+   College Publication Banner
+   ========================================================================== */
+.publication-card {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  box-shadow: 0 10px 30px rgba(15, 56, 44, 0.06);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.publication-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: #E67E22;
+}
+
+.pub-logo-col {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pub-logo {
+  width: clamp(120px, 18vw, 170px);
+  height: clamp(120px, 18vw, 170px);
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #f1f5f9;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.pub-text-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pub-subtitle {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #E67E22;
+  margin-bottom: 0.25rem;
+}
+
+.pub-text-col h2 {
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  font-weight: 800;
+  color: #0f382c;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.pub-text-col p {
+  font-size: clamp(0.92rem, 1.6vw, 1rem);
+  color: #475569;
+  line-height: 1.6;
+  margin: 0 0 1.25rem 0;
+  max-width: 720px;
+}
+
+.pub-fb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #1877f2;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.25);
+}
+
+.pub-fb-btn:hover {
+  background: #166fe5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(24, 119, 242, 0.35);
+}
+
+.fb-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ==========================================================================
+   Filter Tabs & Grid Layout
+   ========================================================================== */
 .filter-tabs {
   display: flex;
   gap: 0.6rem;
@@ -290,14 +438,12 @@ onUnmounted(() => {
   box-shadow: 0 4px 12px rgba(15, 56, 44, 0.18);
 }
 
-/* News Grid Layout */
 .news-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: clamp(1.25rem, 2.5vw, 1.75rem);
 }
 
-/* Empty State */
 .empty-state {
   text-align: center;
   padding: 3rem;
@@ -309,7 +455,7 @@ onUnmounted(() => {
 }
 
 /* ==========================================================================
-   Scroll Animation
+   Scroll Animation & Responsive Breakpoints
    ========================================================================== */
 .animate-on-scroll {
   opacity: 0;
@@ -321,5 +467,16 @@ onUnmounted(() => {
 .animate-on-scroll.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (max-width: 640px) {
+  .publication-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pub-text-col {
+    align-items: center;
+  }
 }
 </style>
