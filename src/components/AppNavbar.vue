@@ -1,5 +1,26 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import { ref, watch } from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
+
+// Mobile menu toggle state
+const isMobileMenuOpen = ref(false)
+const isAcademicDropdownOpen = ref(false)
+
+const route = useRoute()
+
+// Automatically close the mobile drawer on route navigation
+watch(() => route.path, () => {
+  isMobileMenuOpen.value = false
+  isAcademicDropdownOpen.value = false
+})
+
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
+}
+
+const toggleAcademicDropdown = () => {
+  isAcademicDropdownOpen.value = !isAcademicDropdownOpen.value
+}
 </script>
 
 <template>
@@ -14,13 +35,26 @@ import { RouterLink } from 'vue-router'
       </RouterLink>
     </div>
 
-    <nav class="nav-links">
+    <!-- Mobile Hamburger Button -->
+    <button 
+      class="mobile-toggle" 
+      @click="toggleMobileMenu" 
+      :class="{ 'is-active': isMobileMenuOpen }"
+      aria-label="Toggle navigation menu"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- Navigation Links Container -->
+    <nav class="nav-links" :class="{ 'is-open': isMobileMenuOpen }">
       <RouterLink to="/" class="nav-item">Home</RouterLink>
       <RouterLink to="/about" class="nav-item">About</RouterLink>
       
       <!-- Academic Programs Dropdown -->
-      <div class="dropdown">
-        <button class="dropbtn">
+      <div class="dropdown" :class="{ 'is-mobile-open': isAcademicDropdownOpen }">
+        <button class="dropbtn" @click="toggleAcademicDropdown">
           Academic Programs 
           <span class="chevron">▾</span>
         </button>
@@ -47,7 +81,7 @@ import { RouterLink } from 'vue-router'
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 2.5rem;
-  background: rgba(6, 44, 30, 0.85);
+  background: rgba(6, 44, 30, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 176, 39, 0.25);
@@ -98,7 +132,41 @@ import { RouterLink } from 'vue-router'
   letter-spacing: 0.03em;
 }
 
-/* --- Modern Navigation Links --- */
+/* --- Mobile Hamburger Toggle --- */
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.mobile-toggle .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #FFB027;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+.mobile-toggle.is-active .bar:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+
+.mobile-toggle.is-active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-toggle.is-active .bar:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* --- Desktop Navigation Links --- */
 .nav-links {
   display: flex;
   gap: 0.5rem;
@@ -151,7 +219,6 @@ import { RouterLink } from 'vue-router'
   background: linear-gradient(135deg, #ffb838 0%, #fbbf24 100%);
 }
 
-/* Active Contact Us Button */
 .nav-cta.router-link-exact-active {
   background: linear-gradient(135deg, #FFB027 0%, #E67E22 100%) !important;
   color: #042016 !important;
@@ -159,7 +226,7 @@ import { RouterLink } from 'vue-router'
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* --- Glassmorphism Dropdown --- */
+/* --- Dropdown Styles --- */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -202,16 +269,6 @@ import { RouterLink } from 'vue-router'
   z-index: 100;
 }
 
-.dropdown-content::before {
-  content: '';
-  position: absolute;
-  top: -16px;
-  left: 0;
-  width: 100%;
-  height: 16px;
-  background: transparent;
-}
-
 .dropdown-content a {
   color: #cbd5e1;
   padding: 0.75rem 1rem;
@@ -246,10 +303,100 @@ import { RouterLink } from 'vue-router'
   }
 }
 
-@media (max-width: 900px) {
+/* ==========================================================================
+   Responsive Breakpoints & Mobile Drawer
+   ========================================================================== */
+@media (max-width: 960px) {
   .navbar {
-    padding: 0.75rem 1.25rem;
+    padding: 0.85rem 1.25rem;
   }
+
+  .mobile-toggle {
+    display: flex;
+  }
+
+  .brand-title {
+    font-size: 0.95rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.65rem;
+  }
+
+  /* Mobile Vertical Off-Canvas Drawer */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: rgba(4, 28, 19, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 5.5rem 1.5rem 2rem 1.5rem;
+    gap: 0.75rem;
+    border-radius: 0;
+    border: none;
+    border-left: 1px solid rgba(255, 176, 39, 0.25);
+    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .nav-links.is-open {
+    right: 0;
+  }
+
+  .nav-item, 
+  .dropbtn {
+    width: 100%;
+    text-align: left;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.98rem;
+    border-radius: 10px;
+  }
+
+  .nav-cta {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  /* Mobile Accordion Dropdown */
+  .dropdown {
+    width: 100%;
+  }
+
+  .dropbtn {
+    justify-content: space-between;
+  }
+
+  .dropdown-content {
+    position: static;
+    transform: none;
+    display: none;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    min-width: 100%;
+    box-shadow: none;
+    margin-top: 0.35rem;
+    padding: 0.35rem;
+  }
+
+  .dropdown.is-mobile-open .dropdown-content {
+    display: block;
+  }
+
+  .dropdown.is-mobile-open .chevron {
+    transform: rotate(180deg);
+  }
+}
+
+@media (max-width: 480px) {
   .brand-subtitle {
     display: none;
   }
