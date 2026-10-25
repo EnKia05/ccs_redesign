@@ -31,28 +31,34 @@ onUnmounted(() => {
   }
 })
 
-// Sample featured news items
+// Updated featured news items (Cards 5, 3, and 1 from News.vue)
 const featuredNews = [
   {
-    id: 1,
-    title: 'CCS Students Secure Top Spots in National Hackathon',
-    date: 'October 18, 2026',
-    category: 'Achievement',
-    summary: 'Our Computer Science and IT teams demonstrated exceptional skill in software development and algorithm design.'
-  },
-  {
-    id: 2,
-    title: 'Enrollment Open for Next Semester Academic Programs',
-    date: 'October 10, 2026',
-    category: 'Admissions',
-    summary: 'Explore our specialized degree offerings across IT, CS, Digital Media, and Library Science.'
+    id: 5,
+    title: '𝗖𝗖𝗦’ 𝗦𝘁𝗿𝗲𝗲𝘁 𝗗𝗮𝗻𝗰𝗲 𝗧𝗿𝗼𝘂𝗽𝗲 𝗪𝗼𝘄𝘀 𝗦𝗽𝗲𝗰𝘁𝗮𝘁𝗼𝗿𝘀 𝗪𝗶𝘁𝗵 𝗔 𝗚𝗿𝗮𝗻𝗱 𝗦𝗹𝗮𝗺 𝗣𝗲𝗿𝗳𝗼𝗿𝗺𝗮𝗻𝗰𝗲 𝗦𝗲𝗰𝘂𝗿𝗶𝗻𝗴 𝗔 𝗧𝗵𝗿𝗲𝗲-𝗣𝗲𝗮𝘁 𝗖𝗵𝗮𝗺𝗽𝗶𝗼𝗻𝘀𝗵𝗶𝗽 𝗦𝘁𝗿𝗲𝗮𝗸 𝗗𝘂𝗿𝗶𝗻𝗴 𝗨𝗪𝗖𝗙 𝟮𝟬𝟮𝟲',
+    date: 'October 02, 2026',
+    category: 'Achievements',
+    summary: 'CCS\'s street dance troupe performed their interpretation of the Dreamworks movie “Turbo,” featuring songs, props and costumes inspired by the 2013 animated film. The performance was done before every one of the three judging stations, and concluded with the College of Computer Studies being declared the champion for the third time in a row since 2024.',
+    url: 'https://www.facebook.com/share/p/1KobP4gjjk/',
+    image: 'https://scontent.fceb2-2.fna.fbcdn.net/v/t39.99422-6/846321167_1109973875114292_3286349829065792226_n.png?stp=dst-jpg_tt6&cstp=mx960x640&ctp=s960x640&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHmzm6oV6_Fej6bhOqD_ykzXSmfHbn4d-pdKZ8dufh36pzx9OAVBw3Sk-szPuJNePwmeLCoNthqqQTGoKIukGUA&_nc_ohc=0ctQmmZjaq8Q7kNvwHdOsPs&_nc_oc=Adr2bIA1xoDv0skcsZJwVF4YKZaqa5PMq91DU836s576X7UEJMHu9h5GzsLE8IhjiNM&_nc_zt=14&_nc_ht=scontent.fceb2-2.fna&_nc_gid=uG-or_hITbpgo-FzWBcTBg&_nc_ss=7b2a8&oh=00_AQMyVP3WzxFyBroCHVws8D67JFVW7zyhRUMOP10LbR1D5A&oe=6AE39D0C'
   },
   {
     id: 3,
-    title: 'Guest Lecture Series: Emerging Trends in AI and Media',
-    date: 'September 28, 2026',
+    title: '𝗖𝗖𝗦\' 𝗖𝗵𝗼𝗿𝗶𝘀𝘁𝗲𝗿𝘀 𝗦𝗲𝗻𝘀𝗮𝘁𝗶𝗼𝗻𝗮𝗹𝗹𝘆 𝗦𝗲𝗿𝗲𝗻𝗮𝗱𝗲𝘀 𝗥𝗠𝗔 𝗗𝘂𝗿𝗶𝗻𝗴 𝗨𝗪𝗖𝗙 𝟮𝟬𝟮𝟲 𝗖𝗵𝗼𝗿𝗮𝗹𝗲 𝗖𝗼𝗺𝗽𝗲𝘁𝗶𝘁𝗶𝗼𝗻',
+    date: 'October 02, 2026',
     category: 'Events',
-    summary: 'Industry experts share insights on artificial intelligence, interactive design, and data ethics.'
+    summary: 'The College of Computer Studies\' (CCS) student choir participated in the University Week Centralian Fest 2026 (UWCF 2026) Chorale Competition at the Rose Memorial Auditorium, Central Philippine University.',
+    url: 'https://www.facebook.com/share/p/1KNANVAYsC/',
+    image: 'https://scontent.fceb2-1.fna.fbcdn.net/v/t39.99422-6/854741147_1972805980057835_6004915344997477475_n.png?stp=dst-jpg_tt6&cstp=mx2048x1365&ctp=s2048x1365&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHmH2wfq_m46Vfw0io3XslZpAW2ZzdwwJekBbZnN3DAl6e_ebpM7FguvG72m1QraTeynJeivwgu0F1ZH9iSiFay&_nc_ohc=Ise8kwXDxTgQ7kNvwFBd32f&_nc_oc=AdoTkEC6qqC1NR1IydrJ4FV2bfqwLBq3P5YqZKQ9XwOcY4qkA0FP7EKd-Xx8sQfcg-k&_nc_zt=14&_nc_ht=scontent.fceb2-1.fna&_nc_gid=C90-htRfcKSLA9TAdRk61g&_nc_ss=7b2a8&oh=00_AQN8n8ugMYP1prTvcpr4m3_ToFhpJ12UVbaGditP0YqL1w&oe=6AE39B01'
+  },
+  {
+    id: 1,
+    title: 'CPU Computer Science students secure Top 10 spot in AI Game On! IV 2026',
+    date: 'Aug 20, 2026',
+    category: 'Achievements',
+    summary: 'Congratulations Gian Angelo I. Tumulak (BSCS-3) and Florlynn Hope M. Tugbang (BSCS-3) of the College of Computer Studies for being named among the Top 10 national finalists of AI Game On! IV 2026!',
+    url: 'https://cpu.edu.ph/the-centralian-link/cpu-computer-science-students-secure-top-10-spot-in-ai-game-on-iv-2026/',
+    image: 'https://cpu.edu.ph/wp-content/uploads/2026/08/CPU-Computer-Science-students-secure-Top-10-spot-in-AI-Game-On-IV-2026.jpg'
   }
 ]
 </script>
@@ -175,6 +181,8 @@ const featuredNews = [
             :date="item.date"
             :category="item.category"
             :summary="item.summary"
+            :url="item.url"
+            :image="item.image"
           />
         </div>
 
