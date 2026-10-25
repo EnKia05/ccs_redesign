@@ -1,0 +1,71 @@
+@import './base.css';
+
+/* Global Color Variables & Theme Tokens */
+:root {
+  --primary-color: #FFB027;
+  --primary-hover: #e59c1f;
+  --primary-dark: #cc8400;
+  --primary-text: #0f172a; /* Dark navy text for optimal contrast on gold background */
+
+  --bg-dark: #0f172a;
+  --bg-dark-surface: #1e293b;
+  --bg-light: #f8fafc;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --text-light: #ffffff;
+}
+
+/* Reset page layout to full screen width */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  min-height: 100vh;
+  width: 100%;
+}
+
+#app {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+/* Global Link Styles */
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+/* Active Vue Router Link State */
+.router-link-active {
+  color: var(--primary-color) !important;
+}
+
+/* Global Primary Button Overrides */
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  color: var(--primary-text) !important;
+  border: none !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 14px rgba(255, 176, 39, 0.35) !important;
+  transition: all 0.25s ease-in-out !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover) !important;
+  color: var(--primary-text) !important;
+  box-shadow: 0 6px 20px rgba(255, 176, 39, 0.5) !important;
+}
