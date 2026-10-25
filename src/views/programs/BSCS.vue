@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
+import { computed, onMounted, onUnmounted } from 'vue'
+import { facultyData } from '@/data/facultyData'
+import FacultyCard from '@/components/FacultyCard.vue'
 
 let observer: IntersectionObserver | null = null
 
@@ -27,6 +29,21 @@ onUnmounted(() => {
   if (observer) {
     observer.disconnect()
   }
+})
+
+// Dynamically extract Computer Science faculty members & department leadership from facultyData
+const csFaculty = computed(() => {
+  const members: Array<{ name: string; role: string; education: string; photo: string }> = []
+
+  facultyData.forEach((dept) => {
+    dept.people.forEach((person) => {
+      if (person.role.includes('BSCS') || person.role.includes('Computer Science')) {
+        members.push(person)
+      }
+    })
+  })
+
+  return members
 })
 </script>
 
@@ -354,6 +371,25 @@ onUnmounted(() => {
             </ul>
           </div>
         </section>
+
+        <!-- 6. Computer Science Faculty Section (Using Shared FacultyCard Component) -->
+        <section class="section animate-on-scroll">
+          <div class="section-header align-left">
+            <h2>Computer Science Faculty</h2>
+            <div class="header-line align-left-line"></div>
+          </div>
+
+          <div class="faculty-card-grid">
+            <FacultyCard
+              v-for="person in csFaculty"
+              :key="person.name"
+              :name="person.name"
+              :role="person.role"
+              :education="person.education"
+              :photo="person.photo"
+            />
+          </div>
+        </section>
       </div>
     </div>
   </div>
@@ -616,6 +652,11 @@ onUnmounted(() => {
   text-align: center;
 }
 
+.section-header.align-left {
+  align-items: flex-start;
+  text-align: left;
+}
+
 .section-header h2 {
   font-size: clamp(1.6rem, 3.2vw, 2.2rem);
   font-weight: 800;
@@ -629,6 +670,10 @@ onUnmounted(() => {
   background: #FFB027; /* CPU Gold Line Accent */
   margin-top: 0.65rem;
   border-radius: 2px;
+}
+
+.align-left-line {
+  margin-left: 0;
 }
 
 /* ==========================================================================
@@ -1037,6 +1082,16 @@ onUnmounted(() => {
 }
 
 /* ==========================================================================
+   6. Computer Science Faculty Cards Layout
+   ========================================================================== */
+.faculty-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 240px));
+  gap: clamp(1rem, 2vw, 1.25rem);
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
    Scroll Animations & Global Responsive Breakpoint Tweaks
    ========================================================================== */
 .animate-on-scroll {
@@ -1061,6 +1116,10 @@ onUnmounted(() => {
   .org-open-logo {
     max-width: 240px;
     min-width: unset;
+  }
+
+  .faculty-card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
 }
 
