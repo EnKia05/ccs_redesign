@@ -31,7 +31,6 @@ onUnmounted(() => {
   }
 })
 
-// Dynamically extract Computer Science faculty members & department leadership from facultyData
 const csFaculty = computed(() => {
   const members: Array<{ name: string; role: string; education: string; photo: string }> = []
 

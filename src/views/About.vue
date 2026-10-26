@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
 
-// Helper function to resolve dynamic image URLs properly in Vite
 const getImageUrl = (path: string) => {
   return new URL(`../assets/images/partners/${path}`, import.meta.url).href
 }

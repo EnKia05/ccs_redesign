@@ -31,7 +31,6 @@ onUnmounted(() => {
   }
 })
 
-// Extract BSDMIA faculty or fallback to Program Coordinator Marjee Rose B. Parreño
 const dmiaFaculty = computed(() => {
   const members: Array<{ name: string; role: string; education: string; photo: string }> = []
 
@@ -53,7 +52,7 @@ const dmiaFaculty = computed(() => {
       name: 'Marjee Rose B. Parreño',
       role: 'Program Coordinator (BSDMIA)',
       education: 'Master in Business Administration',
-      photo: '/faculty/parreno.jpg' // Adjust photo path if needed
+      photo: '/faculty/parreno.jpg'
     })
   }
 

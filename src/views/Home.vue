@@ -31,7 +31,6 @@ onUnmounted(() => {
   }
 })
 
-// Updated featured news items (Cards 5, 3, and 1 from News.vue)
 const featuredNews = [
   {
     id: 5,

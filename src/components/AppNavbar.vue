@@ -16,6 +16,9 @@ watch(() => route.path, () => {
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
+  if (!isMobileMenuOpen.value) {
+    isAcademicDropdownOpen.value = false
+  }
 }
 
 const toggleAcademicDropdown = () => {
@@ -252,13 +255,23 @@ const toggleAcademicDropdown = () => {
   transform: rotate(180deg);
 }
 
+/* Hover bridge fix for desktop */
+.dropdown::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 16px;
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
   top: calc(100% + 12px);
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(4, 32, 22, 0.95);
+  background: rgba(4, 32, 22, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 176, 39, 0.3);
@@ -287,9 +300,12 @@ const toggleAcademicDropdown = () => {
   transform: translateX(4px);
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-  animation: fadeIn 0.2s ease-in-out forwards;
+/* Show dropdown on hover (Desktop) */
+@media (min-width: 961px) {
+  .dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeIn 0.2s ease-in-out forwards;
+  }
 }
 
 @keyframes fadeIn {
@@ -337,7 +353,7 @@ const toggleAcademicDropdown = () => {
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    padding: 5.5rem 1.5rem 2rem 1.5rem;
+    padding: 5.5rem 1.25rem 2rem 1.25rem;
     gap: 0.75rem;
     border-radius: 0;
     border: none;
@@ -345,6 +361,7 @@ const toggleAcademicDropdown = () => {
     transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
     z-index: 1000;
+    overflow-y: auto;
   }
 
   .nav-links.is-open {
@@ -366,9 +383,14 @@ const toggleAcademicDropdown = () => {
     text-align: center;
   }
 
-  /* Mobile Accordion Dropdown */
+  /* Mobile Accordion Dropdown Override */
   .dropdown {
     width: 100%;
+    position: relative;
+  }
+
+  .dropdown::before {
+    display: none;
   }
 
   .dropbtn {
@@ -379,12 +401,23 @@ const toggleAcademicDropdown = () => {
     position: static;
     transform: none;
     display: none;
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     min-width: 100%;
     box-shadow: none;
-    margin-top: 0.35rem;
-    padding: 0.35rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    animation: none;
+  }
+
+  .dropdown-content a {
+    padding: 0.65rem 0.85rem;
+  }
+
+  .dropdown-content a:hover,
+  .dropdown-content a.router-link-exact-active {
+    transform: translateX(2px);
   }
 
   .dropdown.is-mobile-open .dropdown-content {

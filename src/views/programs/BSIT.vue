@@ -31,7 +31,6 @@ onUnmounted(() => {
   }
 })
 
-// Dynamically extract Information Technology faculty & Department Head from facultyData
 const itFaculty = computed(() => {
   const members: Array<{ name: string; role: string; education: string; photo: string }> = []
 

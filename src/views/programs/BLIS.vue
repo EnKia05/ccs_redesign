@@ -53,7 +53,7 @@ const blisFaculty = computed(() => {
       name: 'Ana Mae B. Cantel',
       role: 'Program Coordinator (BLIS)',
       education: 'Master of Library and Information Science',
-      photo: '/faculty/cantel.jpg' // Adjust photo path if needed
+      photo: '/faculty/cantel.jpg'
     })
   }
 
